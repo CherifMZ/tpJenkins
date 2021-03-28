@@ -1,0 +1,26 @@
+
+plugins {
+    id 'jacoco'
+    id "org.sonarqube" version "3.1.1"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+publishing {
+    repositories {
+        maven {
+            url 'https://mymavenrepo.com/repo/AGUPaSCbHrTVHmtVpXKL/'
+            credentials {
+                username 'myMavenRepo'
+                password 'ogl2021'
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
