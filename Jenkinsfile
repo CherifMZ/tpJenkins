@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-        email = ""
+        email =""
     }
   stages {
     stage('build') {
