@@ -7,8 +7,7 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-publishing {
-    repositories {
+repositories {
         maven {
             url 'https://mymavenrepo.com/repo/AGUPaSCbHrTVHmtVpXKL/'
             credentials {
@@ -17,12 +16,3 @@ publishing {
             }
         }
     }
-
-    publications {
-        maven(MavenPublication) {
-            from components.java
-        }
-    }
-}
-
-apply plugin: 'maven-publish'
