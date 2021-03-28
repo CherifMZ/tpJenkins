@@ -44,5 +44,11 @@ pipeline {
       }
     }
 
+    stage('Slack Notification') {
+      steps {
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'T01SFD57G30/B01T0QYTRB3/17KbduWNreCJNOwSV3av7aES', channel: '#tp-jenkins', teamDomain: 'jenkinsequipe.slack.com', message: 'notification : API a été déployée')
+      }
+    }
+
   }
 }
