@@ -24,3 +24,5 @@ publishing {
         }
     }
 }
+
+apply plugin: 'maven-publish'
