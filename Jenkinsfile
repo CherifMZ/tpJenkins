@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+        email = ""
+    }
   stages {
     stage('build') {
       steps {
@@ -9,11 +12,25 @@ pipeline {
         archiveArtifacts 'build/docs/javadoc/*'
         junit(allowEmptyResults: true, testResults: 'build/test-results/test/*.xml')
       }
+      
+      post {
+        success {
+          script {
+            email = "Jenkins Success"
+          }
+        }
+        
+        failure {
+          script {
+            email = "Jenkins Fail"
+          }
+        }
+      }
     }
 
     stage('Mail Notification') {
       steps {
-        mail(subject: 'Mail Notifications', body: 'Jenkins', cc: 'hs_boucheta@esi.dz', to: 'hm_latreche@esi.dz')
+        mail(subject: 'Mail Notifications', body: email, cc: 'hs_boucheta@esi.dz', to: 'hm_latreche@esi.dz')
       }
     }
 
